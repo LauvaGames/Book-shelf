@@ -1,0 +1,27 @@
+div#myDiv
+
+// coverflow data
+ul#playList1(style="display:none;")
+
+    // category 1
+    ul.content(data-cat="Новинки")
+        -for(i=books.length-1; i>books.length-11; i--)
+            ul
+                li(data-url="http://95.46.99.158:3000/formForBooks/?id=#{books[i]['ID']}")
+                li(data-thumbnail-path="http://95.46.99.158:3000/#{books[i]['Image']}")
+                li(data-thumbnail-text="")
+                    p.largeLabel #{books[i]['Name']}
+                    p.smallLabel #{books[i]['Author']}
+
+
+    // end
+
+    // category 2
+    ul(data-cat="Популярные")
+        -for(i=0; i<popular.length; i++)
+            ul
+                li(data-url="http://95.46.99.158:3000/formForBooks/?id=#{popular[i]['ID']}")
+                li(data-thumbnail-path="http://95.46.99.158:3000/#{popular[i]['Image']}")
+                li(data-thumbnail-text="")
+                    p.largeLabel #{popular[i]['Name']}
+                    p.smallLabel #{popular[i]['Author']}

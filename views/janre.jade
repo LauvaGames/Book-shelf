@@ -1,0 +1,98 @@
+doctype html
+head
+    //meta(charset="UTF-8")
+    title Janre
+    script(src="https://code.jquery.com/jquery-3.1.1.js", integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=", crossorigin="anonymous")
+    link(rel='stylesheet', href='bootstrap/css/bootstrap.css', type='text/css', media='all')
+    link(rel='stylesheet', href='css/genre.css', type='text/css')
+    script(src="validator/dist/jquery.validate.min.js")
+
+body
+    div(style='height:100%;')
+        div.col-lg-2#navcol
+            ul.nav.nav-stacked(style="margin-top:100px;")
+                li.active
+                    a(href="/admin") Добавить книгу
+                li
+                    a(href="/janre") Изменить автора/жанр
+                li
+                    a(href="#") Редактировать (удалить)
+                li
+                    a(href="#") График активности посещений
+        div.col-lg-10(style='height:100%;')
+            div.col-lg-6#firstGenre
+                div(style='margin-top:20px')
+                    div.col-lg-3
+                        label(for="genre") Название
+                    div.col-lg-6
+                        form#genreForm(method="get", action="")
+                            input#genre.form-control(type="text", name="genre")
+                    div.col-lg-3
+                        button.btn.btn-primary#addGenre(type='submit') Добавить
+                div
+                    -for(var i = 0; i<r.length; i++)
+                        div
+                            div.col-lg-6(style='padding-top:15px')
+                                input.form-control.genreName(type="text", name="date", value="#{r[i]['Genre']}")
+                            div.col-lg-3(style='padding-top:15px')
+                                button.btn.btn-danger.form-control.delGenre(type='button', data-id="#{r[i]['ID']}") Удалить
+                            div.col-lg-3(style='padding-top:15px')
+                                button.btn.btn-primary.form-control.upGenre(type='button', data-id="#{r[i]['ID']}") Сохранить
+            div.col-lg-6#secondAuthors
+                div(style='margin-top:20px')
+                    div.col-lg-3
+                        label(for="author") Имя автора
+                    div.col-lg-6
+                        input#author.form-control(type="text")
+                    div.col-lg-3
+                        button.btn.btn-primary#addAuthor(type='submit') Добавить
+                div
+                    -for(var i = 0; i<authors.length; i++)
+                        div
+                            div.col-lg-6(style='padding-top:15px')
+                                input.form-control.authorName(type="text", name="date", value="#{authors[i]['Name']}")
+                            div.col-lg-3(style='padding-top:15px')
+                                button.btn.btn-danger.form-control.delAuthor(type='button', data-id="#{authors[i]['id']}") Удалить
+                            div.col-lg-3(style='padding-top:15px')
+                                button.btn.btn-primary.form-control.upAuthor(type='button', data-id="#{authors[i]['id']}") Сохранить
+            div.col-lg-6#thirdPublishing
+                div(style='margin-top:20px')
+                    div.col-lg-3
+                        label(for="Publishing") Издательство
+                    div.col-lg-6
+                        input#Publishing.form-control(type="text")
+                    div.col-lg-3
+                        button.btn.btn-primary#addPublishing(type='submit') Добавить
+                div
+                    -for(var i = 0; i<publ.length; i++)
+                        div
+                            div.col-lg-6(style='padding-top:15px')
+                                input.form-control.publName(type="text", name="date", value="#{publ[i]['Publishing']}")
+                            div.col-lg-3(style='padding-top:15px')
+                                button.btn.btn-danger.form-control.delPublishing(type='button', data-id="#{publ[i]['ID']}") Удалить
+                            div.col-lg-3(style='padding-top:15px')
+                                button.btn.btn-primary.form-control.upPublishing(type='button', data-id="#{publ[i]['ID']}") Сохранить
+            div.col-lg-6#fourthLanguage
+                div(style='margin-top:20px')
+                    div.col-lg-3
+                        label(for="language") Язык
+                    div.col-lg-6
+                        input#Language.form-control(type="text")
+                    div.col-lg-3
+                        button.btn.btn-primary#addLanguage(type='submit') Добавить
+                div
+                    -for(var i = 0; i<lang.length; i++)
+                        div
+                            div.col-lg-6(style='padding-top:15px')
+                                input.form-control.langName(type="text", name="date", value="#{lang[i]['Language']}")
+                            div.col-lg-3(style='padding-top:15px')
+                                button.btn.btn-danger.form-control.delLanguage(type='button', data-id="#{lang[i]['ID']}") Удалить
+                            div.col-lg-3(style='padding-top:15px')
+                                button.btn.btn-primary.form-control.upLang(type='button', data-id="#{lang[i]['ID']}") Сохранить
+
+script(type="text/javascript", src="js/admin.js")
+
+
+
+
+

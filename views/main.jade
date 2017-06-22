@@ -1,0 +1,129 @@
+doctype  html
+head
+    meta(charset="UTF-8")
+    title Книжная полка
+    script(type="text/javascript", src="https://code.jquery.com/jquery-3.1.1.js", integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=", crossorigin="anonymous")
+    link(rel='stylesheet', href='bootstrap/css/bootstrap.css', type='text/css', media='all')
+    link(rel="stylesheet", type="text/css", href="slider/load/skin_classic_black.css")
+    link(rel="stylesheet", type="text/css", href="slider/skin_infinite_loop/page.css")
+    link(rel='stylesheet', href='kendo/styles/kendo.common.min.css')
+    link(rel='stylesheet', href='kendo/styles/kendo.default.min.css')
+    link(rel='stylesheet', href='kendo/styles/kendo.default.mobile.min.css')
+    link(rel='stylesheet', type='text/css', href='css/main.css')
+    link(href="https://fonts.googleapis.com/css?family=Russo+One", rel="stylesheet")
+    //script(type="text/javascript", src="js/setCookie.js")
+
+
+
+body
+    div#navigation
+        div#nameAuthorPubl
+            div
+                h3(align='center', style='color:grey; font-family:Russo One, sans-serif;') Введите название книги
+                div#nameDiv(style='padding-top:15px')
+                    input.form-control#booksName(type='text', name='name', list='name')
+                    datalist(id='name')
+                        -for(var i = 0; i<books.length; i++)
+                            option(value="#{books[i]['Name']}")
+            div(style='margin-top:70px')
+                h3(align='center', style='color:grey; font-family:Russo One, sans-serif;') Выберите автора
+                div#authorDiv(style='padding-top:15px')
+                    select#authorSearch(multiple="multiple", data-placeholder="Выберите автора...")
+                        -for(var i = 0; i<author.length; i++)
+                            option.test(value="#{author[i]['Name']}") #{author[i]['Name']}
+            div(style='margin-top:70px')
+                h3(align='center', style='color:grey; font-family:Russo One, sans-serif;') Выберите издательство
+                div#publDiv(style='padding-top:15px')
+                    select#publSearch(multiple="multiple", data-placeholder="Выберите издательство...")
+                        -for(var i = 0; i<publ.length; i++)
+                            option.test(value="#{publ[i]['Publishing']}") #{publ[i]['Publishing']}
+        div#lang
+            div
+                h3(align='center', style='color:grey; font-family:Russo One, sans-serif;') Выберите язык
+                div.row.mp
+                    div.col-lg-6(style='padding-top:10px')
+                        h4(style='margin-left:50px;') Русский
+                    div.col-lg-6(style='padding-top:20px')
+                        input#rusLang(type='checkbox')
+                div.row.mp
+                    div.col-lg-6(style='padding-top:10px')
+                        h4(style='margin-left:50px;') Украинский
+                    div.col-lg-6(style='padding-top:20px')
+                        input#ukrLang(type='checkbox')
+                div.row.mp
+                    div.col-lg-6(style='padding-top:10px')
+                        h4(style='margin-left:50px;') Английский
+                    div.col-lg-6(style='padding-top:20px')
+                        input#engLang(type='checkbox')
+                div.row.mp
+                    div.col-lg-6(style='padding-top:10px')
+                        h4(style='margin-left:50px;') Немецкий
+                    div.col-lg-6(style='padding-top:20px')
+                        input#deuLang(type='checkbox')
+        div#genreYear
+            div
+                h3(align='center', style='color:grey; font-family:Russo One, sans-serif;') Выберите жанр
+                div.row.mp#genreDiv(style='padding-top:15px')
+                    select#genreSearch(multiple="multiple", data-placeholder="Выберите жанр...")
+                        -for(var i = 0; i<genre.length; i++)
+                            option.test(value="#{genre[i]['Genre']}") #{genre[i]['Genre']}
+            div(style='margin-top:70px')
+                h3(align='center', style='color:grey; font-family:Russo One, sans-serif;') Выберите год
+                div.row.mp(style='margin-top:20px')
+                    div.col-lg-6
+                        p(style='margin-left:50px;') до 1500
+                    div.col-lg-6
+                        input#year1(type='checkbox')
+                div.row.mp
+                    div.col-lg-6
+                        p(style='margin-left:50px;') 1500 - 1600
+                    div.col-lg-6
+                        input#year2(type='checkbox')
+                div.row.mp
+                    div.col-lg-6
+                        p(style='margin-left:50px;') 1600 - 1700
+                    div.col-lg-6
+                        input#year3(type='checkbox')
+                div.row.mp
+                    div.col-lg-6
+                        p(style='margin-left:50px;') 1700 - 1800
+                    div.col-lg-6
+                        input#year4(type='checkbox')
+                div.row.mp
+                    div.col-lg-6
+                        p(style='margin-left:50px;') 1800 - 1900
+                    div.col-lg-6
+                        input#year5(type='checkbox')
+                div.row.mp
+                    div.col-lg-6
+                        p(style='margin-left:50px;') 1900 - 2000
+                    div.col-lg-6
+                        input#year6(type='checkbox')
+                div.row.mp
+                    div.col-lg-6
+                        p(style='margin-left:50px;') 2000 - н.д.
+                    div.col-lg-6
+                        input#year7(type='checkbox')
+        div#searchReset
+            input.btn.btn-default#btnForReset(type='button', value='Сбросить')
+            input.btn.btn-default#btnSearch(type='button', value='Найти')
+        div#navigationButton2
+            div#arrowDown2
+
+    div#containerForSlider
+        div#navigationButton
+            div#arrowDown
+        div#content
+script(type="text/javascript", src="js/main.js", async)
+script.
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q || []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-93925805-1', 'auto');
+    ga('send', 'pageview');
+
+
+
+

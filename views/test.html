@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Книжный магазин</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"> </script>
+    <link rel='stylesheet' href='../static/bootstrap/css/bootstrap.css' type='text/css' media='all'/>
+    <script type="text/javascript" src="../static/bootstrap/js/bootstrap.js"></script>
+    <link rel='stylesheet' type='text/css' href='../static/css/test.css' />
+    <script type="text/javascript" src="../static/js/test.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Bookshelf</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#" style="padding-left: 10px; padding-right: 10px;">Детективы и триллеры</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Фантастика <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Космическая фантастика </a></li>
+                        <li><a href="#">Научная фантастика</a></li>
+                        <li><a href="#">Ужасы и мистика</a></li>
+                        <li><a href="#">Фэнтези</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Приключения <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Вестерны </a></li>
+                        <li><a href="#">Исторические приключения</a></li>
+                        <li><a href="#">Морские приключения</a></li>
+                        <li><a href="#">Природа и животные</a></li>
+                        <li><a href="#">Путешествия</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Детская</a></li>
+                <li><a href="#" style="padding-left: 10px; padding-right: 10px;">Любовные романы </a></li>
+                <li><a href="#" style="padding-left: 10px; padding-right: 10px;">Документальная</a></li>
+            </ul>
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Поиск">
+                </div>
+                <button type="submit" class="btn btn-default">Найти</button>
+                <button id='searchMore' type="button" class="btn btn-default">Подробный поиск</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div id="detailedSearch">
+    <div id="leftSearch" class="col-lg-6">
+        <h3> Поиск по названию</h3>
+        <div class="row">
+            <div class="col-lg-8">
+                <input type="search" class="form-control" />
+            </div>
+            <div class="col-lg-4">
+                <button type="button" class="btn btn-default">Поиск</button>
+            </div>
+        </div>
+        <h3> Поиск по автору</h3>
+        <div class="row">
+            <div class="col-lg-8">
+                <input type="search" class="form-control" />
+            </div>
+            <div class="col-lg-4">
+                <button type="button" class="btn btn-default">Поиск</button>
+            </div>
+        </div>
+    </div>
+    <div id="rightSearch" class="col-lg-6">
+        <h3> Поиск по жанрам</h3>
+        <div class="checkbox">
+            <label><input type="checkbox" value="">Детективы и триллеры</label>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox" value="">Фантастика</label>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox" value="">Приключения</label>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox" value="">Детская литература</label>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox" value="">Любовные романы</label>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox" value="">Документальная литература</label>
+        </div>
+        <button type="submit" class="btn btn-default"> Найти</button>
+    </div>
+</div>
+
+
+
+
+
+
+</body>
+
+
+
+
+</html>

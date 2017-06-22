@@ -1,0 +1,96 @@
+doctype html
+head
+    meta(charset="UTF-8")
+    title Admin page
+    script(src="https://code.jquery.com/jquery-3.1.1.js", integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=", crossorigin="anonymous")
+    link(rel='stylesheet', href='bootstrap/css/bootstrap.css', type='text/css', media='all')
+    link(rel='stylesheet', href='kendo/styles/kendo.common.min.css')
+    link(rel='stylesheet', href='kendo/styles/kendo.default.min.css')
+    link(rel='stylesheet', href='kendo/styles/kendo.default.mobile.min.css')
+    link(rel='stylesheet', type='text/css', href='css/admin.css')
+    script(src="kendo/js/jquery.min.js")
+    script(src="kendo/js/kendo.all.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+    //script(src="validator/dist/jquery.validate.min.js")
+
+body
+    div.row.mp(style="height:100vh;")
+        div.col-lg-2#navcol
+            ul.nav.nav-stacked(style="margin-top:100px;")
+                li.active
+                    a(href="/admin") Добавить книгу
+                li
+                    a(href="/janre") Изменить автора/жанр
+                li
+                    a(href="/edit") Редактировать (удалить)
+                li
+                    a(href="/activitySchedule") График активности посещений
+        div.col-lg-10.mp(style="height:100%;overflow:auto")
+            form#addBooks(method='get', action='')
+                div.col-lg-7
+                    div(style='margin-top:30px')
+                        div.col-lg-4
+                            label(for='name', style='margin-top:7px', class="required") Название книги
+                        div.col-lg-8
+                            input.form-control#name(type='text', name='name', required, validationMessage="Это поле должно быть заполнено")
+                    div(style='margin-top:94px')
+                        div.col-lg-4
+                            label(for='author', style='margin-top:7px', class="required") Автор
+                        div.col-lg-8
+                            select#author(multiple="multiple", data-placeholder="Выберите автора...", name='author', required, validationMessage="Это поле должно быть заполнено")
+                                -for(var i = 0; i<author.length; i++)
+                                    option.test(value="#{author[i]['Name']}") #{author[i]['Name']}
+                    div(style='margin-top:158px')
+                        div.col-lg-4
+                            label(for='genre', style='margin-top:7px', class="required") Жанр
+                        div.col-lg-8
+                            select#genre(multiple="multiple", data-placeholder="Выберите жанр...", name='genre', required, validationMessage="Это поле должно быть заполнено")
+                                -for(var i = 0; i<genre.length; i++)
+                                    option.test(value="#{genre[i]['Genre']}") #{genre[i]['Genre']}
+                    div(style='margin-top:222px')
+                        div.col-lg-4
+                            label(for='publishing', style='margin-top:7px', class="required") Издательство
+                        div.col-lg-8
+                            select#publishing(multiple="multiple", data-placeholder="Выберите издательство...",name='publishing', required, validationMessage="Это поле должно быть заполнено")
+                                -for(var i = 0; i<publ.length; i++)
+                                    option.test(value="#{publ[i]['Publishing']}") #{publ[i]['Publishing']}
+                    div(style='margin-top:286px')
+                        div.col-lg-4
+                            label(for='language', style='margin-top:7px', class="required") Язык
+                        div.col-lg-8
+                            select#language(multiple="multiple", data-placeholder="Выберите издательство...", required, name='language' validationMessage="Это поле должно быть заполнено")
+                                -for(var i = 0; i<lang.length; i++)
+                                    option.test(value="#{lang[i]['Language']}") #{lang[i]['Language']}
+                    div(style='margin-top:350px')
+                        div.col-lg-4
+                            label(for='year', style='margin-top:7px', class="required") Год
+                        div.col-lg-8
+                            input.form-control#year(type='number', name='year', required, validationMessage="Это поле должно быть заполнено")
+                    div(style='margin-top:414px')
+                        div.col-lg-4
+                            label(for='description', style='margin-top:7px', class="required") Описание
+                        div.col-lg-8
+                            textarea.form-control#description(type='text', name='description', rows='7', required, validationMessage="Это поле должно быть заполнено")
+
+                div.col-lg-5(style='margin-top:30px')
+                    div
+                        div
+                            label(for='uploadimg', style='margin-top:7px', class="required") Выбрать постер
+                                div#poster
+                        div
+                            input#uploadimg.form-control(type='file', style="display:none;", required, name='uploadimg', validationMessage="Нужно выбрать постер")
+                        div#progressImg
+                            div#progressBar
+                    div(style='margin-top:40px')
+                        div
+                            label(for='uploadfile', style='margin-top:7px', class="required") Выбрать файл
+                        div
+                            input.form-control#uploadfile(type='file', name='uploadfile', required, validationMessage="Нужно выбрать файл")
+                        div#progressFile
+                            div#progressBar2
+                div(style='margin:0 auto; width:100px', class="confirm")
+                    input.btn.btn-default#add(type='submit', value='Добавить')
+
+script(type="text/javascript", src="js/check.js")
+script(type="text/javascript", src="js/admin.js")
+script(type="text/javascript", src="js/multiselectForAdmin.js")

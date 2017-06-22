@@ -1,0 +1,21 @@
+div#myDiv
+
+// coverflow data
+ul#playList1(style="display:none;")
+
+
+    // category 1
+    ul.content(data-cat="Результаты поиска")
+
+        -for(i=0; i<books.length; i++)
+            ul
+                li(data-url="http://95.46.99.158:3000/formForBooks/?id=#{books[i]['ID']}")
+                li(data-thumbnail-path="http://95.46.99.158:3000/#{books[i]['Image']}")
+                li(data-thumbnail-text="")
+                    p.largeLabel #{books[i]['Name']}
+                    p.smallLabel #{books[i]['Author']}
+
+
+    // end
+
+

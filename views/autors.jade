@@ -1,0 +1,27 @@
+doctype html
+head
+    meta(charset="UTF-8")
+    title Authors
+    script(src="https://code.jquery.com/jquery-3.1.1.js", integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=", crossorigin="anonymous")
+    link(rel='stylesheet', href='bootstrap/css/bootstrap.css', type='text/css', media='all')
+
+body
+    div(style='margin-top:20px')
+        div.col-lg-1
+            label(for="author") Имя
+        div.col-lg-6
+            input#author.form-control(type="text")
+        div.col-lg-5
+            button.btn.btn-primary#addAuthor(type='submit') Добавить
+    div
+        div.col-lg-3(style='padding-top:50px')
+            -for(var i = 0; i<q.length; i++)
+                input.form-control#inp(type="text", name="date", value="#{q[i]['Name']}")
+        div.col-lg-2(style='padding-top:50px')
+            -for(var i = 0; i<q.length; i++)
+                button.btn.btn-primary.form-control#but(type='button') Редактировать
+        div.col-lg-2(style='padding-top:50px')
+            -for(var i = 0; i<q.length; i++)
+                button.btn.btn-danger.form-control#but(type='button') Удалить
+
+script(type="text/javascript", src="js/admin.js")

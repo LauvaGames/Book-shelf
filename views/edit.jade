@@ -1,0 +1,138 @@
+doctype html
+head
+    meta(charset="UTF-8")
+    title Edit
+    script(src="https://code.jquery.com/jquery-3.1.1.js", integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=", crossorigin="anonymous")
+    link(rel='stylesheet', href='bootstrap/css/bootstrap.css', type='text/css', media='all')
+    link(rel='stylesheet', href='kendo/styles/kendo.common.min.css')
+    link(rel='stylesheet', href='kendo/styles/kendo.default.min.css')
+    link(rel='stylesheet', href='kendo/styles/kendo.default.mobile.min.css')
+    link(rel='stylesheet', type='text/css', href='css/edit.css')
+    script(src="kendo/js/jquery.min.js")
+    script(src="kendo/js/kendo.all.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+    script(src="validator/dist/jquery.validate.min.js")
+
+body
+    div.row.mp(style="height:100vh;")
+        div.col-lg-2#navcol
+            ul.nav.nav-stacked(style="margin-top:100px;")
+                li.active
+                    a(href="/admin") Добавить книгу
+                li
+                    a(href="/janre") Изменить автора/жанр
+                li
+                    a(href="/edit") Редактировать (удалить)
+                li
+                    a(href="/activitySchedule") График активности посещений
+        div.col-lg-10.mp(style="height:100%;overflow:auto")
+            div.demo-section.k-content.wide(style='height:100%')
+                div(style='margin-top:15px; width:100%; height:40px;')
+                        div.col-lg-1(style='padding-top:8px')
+                            label(for="search", class="required", align='center') Поиск
+                        div.col-lg-4
+                            input#search.form-control(type="text", name="search", required, validationMessage="Поле запроса пустое")
+                        div.col-lg-4
+                            input#searchBtn.btn.btn-default(type='button', value='Найти')
+                div#listView
+                div#pager.k-pager-wrap
+
+script(type="text/javascript", src="js/edit.js")
+div#content
+    script(type="text/x-kendo-template", id="template")
+        div
+            div.product(data-id='#: ID#')
+                img(src='http://95.46.99.158:3000/#= Image#')
+                h6#:Name#
+            div.myModal.modal.fade(role="dialog")
+                div.modal-dialog
+                    div.modal-content
+                        - var formId = 'formId#:ID#'
+                        form.editBooks(method="get", action="", data-id='#: ID#', id=formId)
+                            div.modal-header
+                                button.close(type="button", data-dismiss="modal")&times
+                                h4.modal-title Редактировать книгу #: Name#
+
+                            div.modal-body
+                                div.row.mp
+                                    div.col-lg-2
+                                        label(for='booksName', style='padding:7px', class="required") Название
+                                    div.col-lg-6
+                                        input.form-control.forInputs#booksName(type="text", value='#: Name#', name="booksName", required, validationMessage="Поле должно быть заполнено")
+                                        input.defaultName(type='hidden', value='#: Name#')
+                                div.row.mp
+                                    div.col-lg-2
+                                        label(for='booksGenre', style='padding:7px', class="required") Жанр
+                                    div.col-lg-6
+                                        input.form-control.forInputs#booksGenre(type="text", value='#: Genre#', name="booksGenre", required, validationMessage="Поле должно быть заполнено")
+                                        input.defaultGenre(type='hidden', value='#: Genre#')
+                                div.row.mp
+                                    div.col-lg-2
+                                        label(for='booksAuthor', style='padding:7px', class="required") Автор
+                                    div.col-lg-6
+                                        input.form-control.forInputs#booksAuthor(type="text", value='#: Author#', name="booksAuthor", required, validationMessage="Поле должно быть заполнено")
+                                        input.defaultAuthor(type='hidden', value='#: Author#')
+                                div.row.mp
+                                    div.col-lg-2
+                                        label(for='booksLang', style='padding:7px', class="required") Язык
+                                    div.col-lg-6
+                                        input.form-control.forInputs#booksLang(type="text", value='#: Language#', name="booksLang", required, validationMessage="Поле должно быть заполнено")
+                                        input.defaultLang(type='hidden', value='#: Language#')
+                                div.row.mp
+                                    div.col-lg-2
+                                        label(for='booksYear', style='padding:7px', class="required") Год
+                                    div.col-lg-6
+                                        input.form-control.forInputs#booksYear(type="number", value='#: Year#', name="booksYear", required, validationMessage="Поле должно быть заполнено")
+                                        input.defaultYear(type='hidden', value='#: Year#')
+                                div.row.mp
+                                    div.col-lg-2
+                                        label(for='booksPubl', style='padding:7px', class="required") Издат.
+                                    div.col-lg-6
+                                        input.form-control.forInputs#booksPubl(type="text", value='#: Publishing#', name="booksPubl", required, validationMessage="Поле должно быть заполнено")
+                                        input.defaultPubl(type='hidden', value='#: Publishing#')
+                                div.row.mp
+                                    div.col-lg-2
+                                        label(for='booksDesc', style='padding:7px', class="required") Описание
+                                    div.col-lg-6
+                                        input.form-control.forInputs#booksDescInp(type="text", value='#: Description#', style='display:none')
+                                        textarea.form-control.forInputs#booksDesc(type="text", rows='12', name="booksDesc", required, validationMessage="Поле должно быть заполнено")
+                                        input.defaultDesc(type='hidden', value='#: Description#')
+                                div.row.mp
+                                    div.col-lg-2
+                                        - var fileId = 'idForFile#:ID#'
+                                        label(for=fileId) Новый файл
+                                    div.col-lg-6
+                                        input.changeFile.form-control(type='file', id=fileId, data-id='#: ID#')
+                                        input.changeFileLocation(type='hidden', value='')
+                                div.row.mp
+                                    div(style='margin:10px 0 0')
+                                        - var str = 'idForLabel#:ID#'
+                                        label(for=str) Изменить постер
+                                            - var idForPoster = 'idForPoster#:ID#'
+                                            div.poster(data-id='#: ID#', id=idForPoster, style="width:200px; height:200px; background-image: url(http://95.46.99.158:3000/#= Image#)")
+                                            input.defaultImg(type='hidden', value='#= Image#')
+                                    div
+                                        input.changeImg.form-control(type='file', style="display:none;", id=str, data-id='#: ID#')
+                                        input.changeImgLocation(type='hidden', value='#= Image#')
+                                    div
+                                        button.btn.btn-default#posterDemo(type='button') Просмотр постера
+                                        button.btn.btn-default#posterDemo2(type='button', style='display:none') Новый постер
+                                        input#imgLocation.form-control(type='text', value='http://95.46.99.158:3000/#= Image#', style="display:none; ")
+
+
+
+
+
+
+
+                            div.modal-footer(class="confirm")
+                                button.saveAllChanges.btn.btn-default(type="submit", data-id='#: ID#') Готово
+                                button.cancelAllChanges.btn.btn-default(type="button") Отмена
+                                button.deleteBook.btn.btn-default(type="button", data-id='#: ID#') Удалить книгу
+
+script(type="text/javascript", src="js/check.js")
+            
+
+
+
+

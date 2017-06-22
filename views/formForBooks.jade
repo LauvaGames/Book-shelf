@@ -1,0 +1,33 @@
+head
+    script(type="text/javascript", src="https://code.jquery.com/jquery-3.1.1.js", integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=", crossorigin="anonymous")
+    link(rel='stylesheet', href='css/bootstrap.css', type='text/css', media='all')
+    link(rel='stylesheet', type='text/css', href='css/formForBooks.css')
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+body
+    div.poster
+        img(src="http://95.46.99.158:3000/#{book[0]['Image']}")
+    h3 #{book[0]['Name']}
+    div.pad
+        div.contForBold
+            p.bold Автор:
+        div
+            p #{book[0]['Author']}
+    div.pad
+        div.contForBold
+            p.bold Издательство:
+        div
+            p #{book[0]['Publishing']}
+    div.pad
+        div.contForBold
+            p.bold Год:
+        div
+            p #{book[0]['Year']}
+    div.pad
+        div.contForBold
+            p.bold Жанр:
+        div
+            p #{book[0]['Genre']}
+    h4.pad(style='color: #c5dbf9;') Описание:
+    p.pad #{book[0]['Description']}
+    div#download
+        a(href="http://95.46.99.158:3000/#{book[0]['File']}", download="#{book[0]['File']}") Скачать

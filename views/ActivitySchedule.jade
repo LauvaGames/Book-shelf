@@ -1,0 +1,47 @@
+doctype html
+head
+    meta(charset="UTF-8")
+    title ActivitySchedule
+    script(src="https://code.jquery.com/jquery-3.1.1.js", integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=", crossorigin="anonymous")
+    link(rel='stylesheet', href='bootstrap/css/bootstrap.css', type='text/css', media='all')
+    link(rel='stylesheet', type='text/css', href='css/ActivitySchedule.css')
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+    script(type="text/javascript", src="js/activity.js")
+    script(type="text/javascript", src="js/moment.min.js")
+    script(src="https://code.highcharts.com/highcharts.js")
+    script(src="https://code.highcharts.com/modules/exporting.js")
+
+body
+    div.row.mp(style="height:100vh;")
+        div.col-lg-2#navcol
+            ul.nav.nav-stacked(style="margin-top:100px;")
+                li.active
+                    a(href="/admin") Добавить книгу
+                li
+                    a(href="/janre") Изменить автора/жанр
+                li
+                    a(href="/edit") Редактировать (удалить)
+                li
+                    a(href="/activitySchedule") График активности посещений
+        div.col-lg-10.mp(style="height:100%;overflow:auto")
+            div(style='margin-top:30px')
+                div.col-lg-4(style='padding-top:7px')
+                    label(for='time') Временной промежуток
+                    select#time(style='margin-left:15px')
+                        option(value=1) Сегодня
+                        option(value=2) Последняя неделя
+                        option(value=3) Последний месяц
+                        option(value=4) Последний год
+                div.col-lg-2(style='padding-top:7px')
+                    label(for='country') Страны
+                    select#country(style='margin-left:15px')
+                        option(value='all') All
+                        -for(var i = 0; i<countries.length; i++)
+                            option(value="#{countries[i]}") #{countries[i]}
+            div#container
+            div(style='margin-top:15px')
+                label(for='saveCsv', style='padding-left:15px') Сохранить таблицу с уникальными пользователями в формате .csv
+                //input.btn.btn-default#saveCsv(type='button', value='Скачать', style='margin-left:15px')
+                a#saveCsv(href="uploads/users.csv", download, style='padding:6px 6px; margin-left:15px;') Скачать
+
+

@@ -1,0 +1,42 @@
+body {
+    background-color: #888;
+    margin: 0px;
+    padding:0px;
+}
+.mp {
+    margin: 0px;
+    padding: 0px;
+}
+.pad {
+    padding: 0px;
+}
+a {
+    background-color: #333333;
+    color: cornflowerblue;
+    text-decoration: none;
+}
+a:hover,
+a:focus {
+    color: #ff9900;
+    text-decoration: underline;
+}
+.nav > li > a:hover,
+.nav > li > a:focus {
+    text-decoration: none;
+    background-color: #666;
+}
+#navcol {
+    background-color: #555;
+    border-right: 3px solid #333;
+    height: 100%;
+}
+#inp {
+    margin-top: 5px;
+}
+#but {
+    margin-top: 5px;
+}
+.demo-section label {
+    display: block;
+    margin: 15px 0 5px 0;
+}

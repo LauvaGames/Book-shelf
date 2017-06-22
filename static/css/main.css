@@ -1,0 +1,175 @@
+body {
+    margin:0;
+    background-image:url('../images/fon1.jpg');
+    background-repeat:repeat-x;
+    background-color:black;
+}
+#top {
+    width:100%;
+    height:32px;
+    background-color: black;
+}
+#vhod {
+    position:relative;
+    left:60%;
+    top:2px;
+}
+#search {
+    position:relative;
+    left:70%;
+    top:2px;
+    color:grey;
+}
+#search1 {
+    position:relative;
+    left:70%;
+    top:2px;
+}
+#formy {
+    border-style:solid;
+    border-color: black;
+    display:none;
+    position:relative;
+    background-color: black;
+    left:60%;
+    width:160px;
+}
+form {
+    padding-top: 5px;
+}
+#car {
+    border:solid #ccc;
+    position: absolute;
+    top:150px;
+    left:125px;
+    width: 1100px;
+    height: 300px;
+    background:  rgba(85, 85, 85, 0.5);
+}
+#nav {
+    position: absolute;
+    top:500px;
+    left:70px;
+}
+div.butnav:hover  {
+    opacity: 1;
+}
+div.butnav  {
+    margin: 2px;
+    display: block;
+    background-color: #555555;
+    height: 30px;
+    width: 260px;
+    border-style: solid;
+    border-color: #cccccc;
+    font-size: 1.2em;
+    font-family: Arial,Helvetica,sans-serif;
+    color:#cccccc;
+    padding: 4px 10px 0px 10px;
+    opacity:0.9;
+
+}
+.navlit:hover {
+    opacity: 1;
+}
+li.navlit {
+    display: block;
+    margin: 2px 2px 2px 10px;
+    background-color: #555555;
+    height: 20px;
+    border-style: solid;
+    border-color: #cccccc;
+    font-size: 1em;
+    font-family: Arial,Helvetica,sans-serif;
+    color:#cccccc;
+    padding: 4px 10px 0px 10px;
+    opacity:0.9;
+}
+li {
+    list-style-type: none;
+}
+ul {
+    margin-left: 0;
+    padding-left: 0;
+}
+#content {
+    position: absolute;
+    left:370px;
+    top: 500px;
+    right: 370px;
+    border: solid 4px #cccccc;
+    background-color: #555555;
+    height: 100vh;
+}
+.con {
+    margin:20px;
+    border: solid 3px #cccccc;
+    height: 50vh;
+}
+#spec {
+    position: absolute;
+    right: 70px;
+    top:516px;
+    border: solid 3px #cccccc;
+    background-color: #555555;
+    width: 284px;
+    height: 100vh;
+}
+#specpic {
+    position: relative;
+    left: 42px;
+    animation:anim 1s 10;
+}
+@keyframes anim {
+    0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100% { opacity: 1; }
+    0.001%, 10.001%, 20.001%, 30.001%, 40.001%, 50.001%, 60.001%, 70.001%, 80.001%, 90.001%, 100.001% { opacity: 0.4; }
+}
+#foot {
+    position: absolute;
+    bottom: 0px;
+    background-color:white ;
+    height: 20px;
+
+}
+.carousel-button-left a, .carousel-button-right a{
+    width: 25px;
+    height: 25px;
+    position: relative;
+    top: 132px;
+    cursor: pointer;
+    text-decoration:none;
+}
+.carousel-button-left a{
+    float: left;
+    background: url(../images/carousel-left.png) no-repeat;
+}
+.carousel-button-right a{
+    float: right;
+    background: url(../images/carousel-right.png) no-repeat;
+}
+
+.carousel-wrapper {
+    margin: 10px 30px; /* отступы для стрелок */
+    overflow: hidden; /* скрываем содержимое, выходящее за рамки основной области */
+    position:relative;
+    height: 280px;
+}
+.carousel-items {
+    width: 10000px; /* устанавливаем большую ширину для набора элементов */
+    position: relative; /* позиционируем блок относительно основной области карусели */
+
+}
+.carousel-block {
+    float: left; /* выстраиваем все элементы карусели в ряд */
+    height: 280px;
+    width: 200px; /* задаём ширину каждого элемента */
+    padding: 0px 10px 10px 0px; /* делаем оступы, чтобы элементы не сливались */
+
+}
+.carousel-block img{
+    display:block;
+    height: 100%;
+}
+.carousel-block img:hover {
+    opacity: 0.8;
+}
